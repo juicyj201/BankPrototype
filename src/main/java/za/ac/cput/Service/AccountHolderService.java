@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface AccountHolderService extends IService<AccountHolder, String>{
     public AccountHolder save(AccountHolder accountHolder);
     public Optional<AccountHolder> read(String accountNumber);
-    public List<AccountHolder> readAll();
+    public Iterable<AccountHolder> readAll();
 }

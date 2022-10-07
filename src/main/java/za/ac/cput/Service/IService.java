@@ -6,5 +6,5 @@ import java.util.Optional;
 public interface IService<T, ID> {
     public T save(T object);
     public Optional<T> read(String ID);
-    public List<T> readAll();
+    public Iterable<T> readAll();
 }
