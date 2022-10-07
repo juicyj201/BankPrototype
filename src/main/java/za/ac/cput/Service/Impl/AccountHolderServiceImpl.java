@@ -30,7 +30,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
     }
 
     @Override
-    public List<AccountHolder> readAll() {
+    public Iterable<AccountHolder> readAll() {
         return repo.findAll();
     }
 }
