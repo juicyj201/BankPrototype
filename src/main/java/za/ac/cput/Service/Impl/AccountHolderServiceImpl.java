@@ -3,7 +3,6 @@ package za.ac.cput.Service.Impl;
 import org.springframework.stereotype.Service;
 import za.ac.cput.Domain.Entity.AccountHolder;
 import za.ac.cput.Repository.AccountHolderRepository;
-import za.ac.cput.Repository.Impl.AccountHolderRepositoryImpl;
 import za.ac.cput.Service.AccountHolderService;
 
 import java.util.List;
@@ -11,9 +10,9 @@ import java.util.Optional;
 
 @Service
 public class AccountHolderServiceImpl implements AccountHolderService {
-    public AccountHolderRepositoryImpl repo;
+    public AccountHolderRepository repo;
 
-    public AccountHolderServiceImpl(AccountHolderRepositoryImpl repo){
+    public AccountHolderServiceImpl(AccountHolderRepository repo){
         if(!repo.equals(null)) {
             this.repo = repo;
         }

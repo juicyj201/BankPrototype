@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GreetAccountHolder {
     @RequestMapping("/hello")
-    public String hello(@RequestParam(value="accountHolder", required=true, defaultValue="Mr") String accountHolder, ModelAndView model) {
+    public String hello(@RequestParam(value = "accountHolder") String accountHolder, ModelAndView model) {
         model = new ModelAndView();
         model.addObject("accountHolder", accountHolder);
-        model.setViewName("templates/hello.html");
+        model.setViewName("hello.html");
         //model.addAttribute("accountHolder", accountHolder);
 
         return "hello";

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name="AccountHolder")
@@ -64,7 +66,11 @@ public class AccountHolder {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		Pattern research = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]+$", Pattern.CASE_INSENSITIVE);
+		Matcher searchm = research.matcher(email);
+		if (!searchm.find()){
+			this.email = email;
+		}
 	}
 
 	@Override
