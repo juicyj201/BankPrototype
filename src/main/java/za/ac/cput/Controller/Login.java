@@ -1,8 +1,6 @@
 package za.ac.cput.Controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,10 +15,10 @@ public class Login {
     public ModelAndView login(@ModelAttribute User user){
         ModelAndView model;
 
-        boolean name = Pattern.matches("^[a-zA-Z ]+$", user.getUsername());
-        boolean pass = Pattern.matches("^[a-zA-Z0-9 ]{0,6}$", user.getPassword());
+        boolean name = Pattern.matches("^([a-zA-Z ]+)$", user.getUsername());
+        boolean pass = Pattern.matches("^([a-zA-Z0-9 ]{0,6})$", user.getPassword());
 
-        if(user.getUsername() != null && user.getPassword() != null){
+        if(name != false && pass != false){
             model = new ModelAndView();
             model.setViewName("Login.html");
             model.addObject("loginmessage", "User "+user.getUsername()+", successfully logged.");

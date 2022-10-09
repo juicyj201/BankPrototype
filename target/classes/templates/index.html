@@ -6,12 +6,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <form action="login.html" th:action="@{/login}" th:object="${user}" method="post">
-            UserName:<input type="text" name="username" th:field="*{username}" />
-            <br/><br/>
-            Password:<input type="password" name="password" th:field="*{password}" />
-            <br/><br/>
-            <input type="submit" value="Submit"/>
-        </form>
+        <center>
+            <form th:action="@{/login}" th:object="${user}" method="post">
+                UserName:<input type="text" name="username" th:field="*{username}" />
+                <br/><br/>
+                Password:<input type="password" name="password" th:field="*{password}" />
+                <br/><br/>
+                <input type="submit" value="Submit"/>
+            </form>
+        </center>
     </body>
 </html>
