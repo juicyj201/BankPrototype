@@ -16,13 +16,15 @@ public class AccountHolder {
 	private String lastName;
 	private String address;
 	private String email;
+	private String balance;
 
 	public AccountHolder(AccountHolderBuilder builder){
 		this.accountNumber = builder.accountNumber;
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
 		this.address = builder.address;
-		this.email = this.email;
+		this.email = builder.email;
+		this.balance = builder.balance;
 	}
 
 	public AccountHolder(){
@@ -66,11 +68,21 @@ public class AccountHolder {
 	}
 
 	public void setEmail(String email) {
-		Pattern research = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]+$", Pattern.CASE_INSENSITIVE);
-		Matcher searchm = research.matcher(email);
-		if (!searchm.find()){
-			this.email = email;
-		}
+//		Pattern research = Pattern.compile("^([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\\.([A-Z]+)$", Pattern.CASE_INSENSITIVE);
+//		Matcher searchm = research.matcher(email);
+//		if (!searchm.find()){
+//			this.email = email;
+//		}
+		//TODO - fix the regex pattern for validation on creation
+		this.email = email;
+	}
+
+	public String getBalance() {
+		return balance;
+	}
+
+	public void setBalance(String balance) {
+		this.balance = balance;
 	}
 
 	@Override
@@ -78,12 +90,12 @@ public class AccountHolder {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		AccountHolder that = (AccountHolder) o;
-		return Objects.equals(accountNumber, that.accountNumber) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address) && Objects.equals(email, that.email);
+		return accountNumber.equals(that.accountNumber) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address) && Objects.equals(email, that.email) && Objects.equals(balance, that.balance);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountNumber, firstName, lastName, address, email);
+		return Objects.hash(accountNumber, firstName, lastName, address, email, balance);
 	}
 
 	@Override
@@ -94,6 +106,7 @@ public class AccountHolder {
 				", lastName='" + lastName + '\'' +
 				", address='" + address + '\'' +
 				", email='" + email + '\'' +
+				", balance='" + balance + '\'' +
 				'}';
 	}
 
@@ -103,6 +116,7 @@ public class AccountHolder {
 		public static String lastName;
 		public static String address;
 		public static String email;
+		public static String balance;
 
 		public AccountHolderBuilder(){
 			this.accountNumber = accountNumber;
@@ -110,6 +124,7 @@ public class AccountHolder {
 			this.lastName = lastName;
 			this.address = address;
 			this.email = email;
+			this.balance = balance;
 		}
 
 		public AccountHolderBuilder createAccountNumber(String accountNumber){
@@ -130,6 +145,11 @@ public class AccountHolder {
 
 		public AccountHolderBuilder createEmail(String email){
 			this.email = email;
+			return this;
+		}
+
+		public AccountHolderBuilder createBalance(String balance){
+			this.balance = balance;
 			return this;
 		}
 
