@@ -1,19 +1,21 @@
 package za.ac.cput.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import za.ac.cput.Domain.Entity.User;
 
 @Controller
 public class Index {
-    @RequestMapping("/index")
-    public String index(ModelAndView model){
-        model = new ModelAndView();
-        model.setViewName("templates/index.html");
+    @RequestMapping("/")
+    public ModelAndView index(){
+        ModelAndView model = new ModelAndView();
+        model.addObject("user", new User());
+        model.setViewName("index.html");
 
-        return "Hello. This is the index page.";
+        return model;
     }
+
+
 }
