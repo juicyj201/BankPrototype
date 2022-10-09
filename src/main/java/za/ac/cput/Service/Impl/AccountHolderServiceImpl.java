@@ -29,7 +29,30 @@ public class AccountHolderServiceImpl implements AccountHolderService {
     }
 
     @Override
+    public AccountHolder readByFirstName(String firstName) {
+        List<AccountHolder> list = (List<AccountHolder>) repo.findAll();
+        if(list.stream().findFirst().get().getFirstName().equals(firstName)){
+            return list.stream().findFirst().get();
+        }
+
+        return null;
+    }
+
+
+    @Override
     public Iterable<AccountHolder> readAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public AccountHolder update(AccountHolder accountHolder) {
+        AccountHolder temp = repo.findById(accountHolder.getAccountNumber()).get();
+        temp.setAccountNumber(accountHolder.getAccountNumber());
+        temp.setFirstName(accountHolder.getFirstName());
+        temp.setLastName(accountHolder.getLastName());
+        temp.setAddress(accountHolder.getAddress());
+        temp.setEmail(accountHolder.getEmail());
+        temp.setBalance(accountHolder.getBalance());
+        return repo.save(temp);
     }
 }

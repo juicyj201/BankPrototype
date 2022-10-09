@@ -1,8 +1,19 @@
 package za.ac.cput.Domain.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="User")
 public class User {
+    @Id
     private String username;
     private String password;
+
+    public User(){
+        //empty constructor
+    }
 
     public String getUsername() {
         return username;

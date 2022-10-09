@@ -8,9 +8,9 @@
     <body>
         <center>
             <form th:action="@{/login}" th:object="${user}" method="post">
-                UserName:<input type="text" name="username" th:field="*{username}" />
+                UserName: <input type="text" name="username" th:field="*{username}" />
                 <br/><br/>
-                Password:<input type="password" name="password" th:field="*{password}" />
+                Password: <input type="password" name="password" th:field="*{password}" />
                 <br/><br/>
                 <input type="submit" value="Submit"/>
             </form>

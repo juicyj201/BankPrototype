@@ -7,4 +7,5 @@ public interface IService<T, ID> {
     public T save(T object);
     public Optional<T> read(String ID);
     public Iterable<T> readAll();
+    public T update(T object);
 }
